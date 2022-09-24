@@ -40,9 +40,10 @@ $patient=$query->fetch(PDO::FETCH_OBJ);
     <label for="name" class="form-label">Address</label>
     <textarea id="name" class="form-control" name="Address" ><?php echo $patient->Address?></textarea>
   </div>
-  <input type="hidden"  name="id" value=<?php echo $patient->id?> >
 
+  <input type="hidden"  name="id" value=<?php echo $patient->id?> >
   <input type="submit" name="update" class="btn btn-primary" value="Submit">
+
 </form>
 
 </div>

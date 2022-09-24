@@ -1,6 +1,5 @@
 <?php
 require_once 'connection.php';
-
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +9,8 @@ require_once 'connection.php';
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">  
+    <title>curd</title>
 
 <body>
 
@@ -38,14 +38,16 @@ require_once 'connection.php';
                             $query->execute();
 
                             //Assign the data which you pulled from the database (in the preceding step) AS Object to a $patients
+                        
                             $patients = $query->fetchAll(PDO::FETCH_OBJ);
+// print_r($patients);
                             if ($query->rowCount() > 0) {
                                 //In case that the query returned at least one record, we can echo the records within a foreach loop:
                                 foreach ($patients as $patient) {
                             ?>
                                     <!-- Display Records -->
                                     <tr>
-                                        <td><?php echo htmlentities($patient->id); ?></td>
+                                        <td><?php echo $patient->id ?></td>
                                         <td><?php echo htmlentities($patient->Name); ?></td>
                                         <td><?php echo htmlentities($patient->Age); ?></td>
                                         <td><?php echo htmlentities($patient->Address); ?></td>
@@ -63,5 +65,19 @@ require_once 'connection.php';
             </div>
         </div>
     </div>
+
+    <?php
+
+
+// $query=$connect->prepare("SELECT * from `patients_info` where id=?");
+
+// $query->execute([$_GET['id']]);
+
+// $patient=$query->fetch(PDO::FETCH_OBJ);
+
+
+                            ?>
+                                     
+
 </body>
 

@@ -1,7 +1,10 @@
 <?php
 require_once "connection.php";
-$query=$connect->prepare("select * from`patients_info` where id=?");
+
+$query=$connect->prepare("SELECT * from `patients_info` where id=?");
+
 $query->execute([$_GET['id']]);
+
 $patient=$query->fetch(PDO::FETCH_OBJ);
 ?>
 <!DOCTYPE html>
@@ -9,8 +12,7 @@ $patient=$query->fetch(PDO::FETCH_OBJ);
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>curd</title>
 </head>
 <body>
     
@@ -22,14 +24,13 @@ $patient=$query->fetch(PDO::FETCH_OBJ);
       <img src="./OIP.jfif"  class="img-fluid rounded-start" alt="patient">
     </div>
 
-    <div class="col-md-5"   style="    text-align: center; margin-top: 150px;margin-left: 50px;">
+    <div class="col-md-5"   style=" margin-top: 150px;margin-left: 50px;">
       <div class="card-body">
-        <h1 class="card-title">PatientID #<?PHP echo $patient->id?></h1>
+        <h1 class="card-title" style="    text-align: center;">PatientID #<?PHP echo $patient->id?></h1>
         <p class="card-text">Name : <?PHP echo $patient->Name?></p>
-        <p class="card-text">Age: <?PHP echo$patient->Age?></p>
-        <p class="card-text">Address : <?PHP echo$patient->Address?></p>
-
-        <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+        <p class="card-text">Age: <?PHP echo $patient->Age?></p>
+        <p class="card-text">Address : <?PHP echo $patient->Address?></p>
+       <a href="index.php"><button style ="width:100px;height:30px; background-color:azure;">back</button></a>
       </div>
     </div>
   </div>

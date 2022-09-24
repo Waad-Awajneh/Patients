@@ -29,7 +29,7 @@
         <label for="name" class="form-label">Address</label>
         <textarea id="name" class="form-control" name="Address"></textarea>
       </div>
-
+      
       <button type="submit" name="add" class="btn btn-primary">Submit</button>
     </form>
 
@@ -39,15 +39,36 @@
 
 </html>
 
+
+
+
+
+
+
 <?php
 require_once 'connection.php'; //require include include_once 
 
 if (isset($_POST['add'])) {
+
   $name = $_POST['name'];
   $age = $_POST['Age'];
   $address = $_POST['Address'];
 
+
+
+// query("INSERT INTO `patients_info` (`name`,`age`,`address`) VALUES(?,?,?)");
+
+
+
+
+
+
   //  $query="INSERT INTO `patients_info` (`name`,`age`,`address`) VALUES(:n,:a,:ad)";  //one
+
+
+
+
+   
   $query = "INSERT INTO `patients_info` (`name`,`age`,`address`) VALUES(?,?,?)";        //two 
 
   $query = $connect->prepare($query);
@@ -76,8 +97,8 @@ if (isset($_POST['add'])) {
   // echo $lastInsertId;
   if ($lastInsertId) {
     // Message for successfull insertion
-    echo "<script>alert('Patients Info Inserted Successfully');</script>";
-    echo "<script>window.location.href='index.php'</script>";
+    echo "<script>window.location.href='index.php'</script>"; //one
+    // header("location:./index.php"); //two 
   } else {
     // Message for unsuccessfull insertion
     echo "<script>alert('Something went wrong. Please try again');</script>";
@@ -86,3 +107,4 @@ if (isset($_POST['add'])) {
 }
 
 ?>
+
